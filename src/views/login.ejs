@@ -1,0 +1,78 @@
+<%- include('./includes/head.ejs'); -%> <%- include('./includes/nav.ejs'); -%>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <h1 class="text-center my-3">Criar conta ou logar</h1>
+      <p class="text-center lead">Faça login ou crie uma nova conta</p>
+
+      <%- include("./includes/messages"); -%>
+
+      <div class="row">
+        <div class="col-lg">
+          <h4>Faça seu cadastro</h4>
+          <p>Caso não tenha uma conta, venha fazer parte da agenda!</p>
+          <form action="/login/register" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+            <div class="mb-3 my-4">
+              <label>Seu e-mail</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                placeholder="Digite seu e-mail"
+              />
+            </div>
+            <div class="mb-3 my-4">
+              <label>Senha</label>
+              <input
+                type="password"
+                class="form-control"
+                name="senha"
+                placeholder="Digite sua senha"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Criar minha conta
+            </button>
+          </form>
+        </div>
+
+        <div class="col-lg">
+          <h4>Faça seu login</h4>
+          <p>Se você já é nosso membro, faça login abaixo:</p>
+          <form action="/login/acess" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+            <div class="mb-3 my-4">
+              <label>E-mail</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                placeholder="Digite seu e-mail"
+              />
+            </div>
+            <div class="mb-3 my-4">
+              <label>Senha</label>
+              <input
+                type="senha"
+                class="form-control"
+                name="senha"
+                placeholder="Digite sua senha"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Acessar agenda
+            </button>
+            <div class="col-lg-2"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('./includes/footer.ejs'); -%>
