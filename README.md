@@ -10,10 +10,10 @@ O projeto consiste em um site onde o usuário pode criar sua conta e utilizá-lo
 
 ## Principais Funcionalidades da Agenda
 
-- **Adicionar Contatos**: Permite ao usuário adicionar novos contatos à agenda.
-- **Visualizar Contatos**: Exibe a lista de contatos existentes na agenda.
-- **Atualizar Contatos**: Permite ao usuário editar o número ou nome dos contatos existentes.
-- **Excluir Contatos**: Permite ao usuário remover os contatos da agenda.
+- **Adicionar Contatos**: Permite ao usuário adicionar novos contatos à agenda. (Em desenvolvimento)
+- **Visualizar Contatos**: Exibe a lista de contatos existentes na agenda. (Em desenvolvimento)
+- **Atualizar Contatos**: Permite ao usuário editar o número ou nome dos contatos existentes. (Em desenvolvimento)
+- **Excluir Contatos**: Permite ao usuário remover os contatos da agenda. (Em desenvolvimento)
 
 ## Tecnologias Utilizadas
 
