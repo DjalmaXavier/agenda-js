@@ -8,10 +8,13 @@
   </div>
 </div>
 
-<% } %> <% if (sucesso ) { %>
+<% } %> <% if (sucesso.length > 0 ) { %>
 <div class="row">
   <div class="col my-3">
-    <div class="alert alert-success"><%- sucesso -%></div>
+    <div class="alert alert-success">
+      <% sucesso.forEach(s => { %> <%= sucesso %> <br />
+      <% } ); %>
+    </div>
   </div>
 </div>
 <% } %>
