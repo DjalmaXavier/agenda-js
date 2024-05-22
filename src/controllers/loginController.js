@@ -15,13 +15,13 @@ exports.register = async (req, res) => {
         return res.redirect("/login/index");
       });
       return;
-    } else {
-      console.log("Usuario criado");
-      req.flash("sucesso", "Seu usuário foi criado com sucesso.");
-      req.session.save(() => {
-        return res.redirect("/login/index");
-      });
     }
+    
+    req.flash("sucesso", "Seu usuário foi criado com sucesso.");
+    req.session.save(() => {
+      return res.redirect("/login/index");
+    });
+
   } catch (error) {
     console.log(error);
   }
