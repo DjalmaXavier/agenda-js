@@ -16,28 +16,37 @@ class Login {
     this.users = null;
   }
 
-  async registra() {
-    this.valida();
+  async login() {
+    if (this.erros.length > 0) return;
+
+    this.users = await LoginModel.findOne({ email: this.body.email });
+
+    if (!this.users) {
+      this.erros.push("Usuario invalido");
+      return;
+    }
+    if (!bcryptjs.compareSync(this.body.senha, this.users.senha)) {
+      this.erros.push("Senha invalida");
+      this.users = null;
+      return;
+    }
+  }
+
+  async register() {
+    this.valid();
     if (this.erros.length > 0) return;
     //Verifica se já existe e-mail na base
-
     await this.userExist();
 
     //Verifica novamente se foi encontrado um erro durante a verificação do usuario
-
     if (this.erros.length > 0) return;
 
     const salt = bcryptjs.genSaltSync();
     this.body.senha = bcryptjs.hashSync(this.body.senha, salt);
-
-    try {
-      this.users = await LoginModel.create(this.body);
-    } catch (error) {
-      console.log(error);
-    }
+    return await LoginModel.create(this.body);
   }
 
-  valida() {
+  valid() {
     this.cleanUp();
     //Verificar e-mail
     if (!validator.isEmail(this.body.email)) this.erros.push("E-mail invalido");
@@ -61,9 +70,9 @@ class Login {
   }
 
   async userExist() {
-    const verify = await LoginModel.findOne({ email: this.body.email });
+    this.users = await LoginModel.findOne({ email: this.body.email });
 
-    if (verify) {
+    if (this.users) {
       this.erros.push("Usuário já cadastrado.");
     }
   }
