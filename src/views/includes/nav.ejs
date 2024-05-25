@@ -1,10 +1,20 @@
 <nav class="navbar bg-body-tertiary bg-dark" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand">Agenda</a>
-    <ul class="navbar-nav ml-aut">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+    <ul class="navbar-nav d-flex flex-row">
+      <li class="nav-item p-2">
+        <a class="nav-link" href="/">Inicio</a>
       </li>
+
+      <% if(!usuario) { %>
+      <li class="nav-item p-2">
+        <a class="nav-link" href="/login/index">Entrar</a>
+      </li>
+      <% } else { %>
+      <li class="nav-item p-3 text-white"><%= usuario.email %></p>
+      </li>
+      <a class="nav-link p-3" href="/login/logout">Sair</a>
+      <% } %>
     </ul>
   </div>
 </nav>
