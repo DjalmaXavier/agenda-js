@@ -49,10 +49,11 @@ class Login {
   valid() {
     this.cleanUp();
     //Verificar e-mail
-    if (!validator.isEmail(this.body.email)) this.erros.push("E-mail invalido");
+    if (!validator.isEmail(this.body.email))
+      this.erros.push("- E-mail invalido");
     //Senha precisa ter 3 a 20 caracteres
     if (this.body.senha.length < 4 || this.body.senha.length > 20) {
-      this.erros.push("Senha precisa ter entre 4 a 20 caracteres");
+      this.erros.push("- Senha precisa ter entre 4 a 20 caracteres");
     }
   }
 
@@ -73,7 +74,7 @@ class Login {
     this.users = await LoginModel.findOne({ email: this.body.email });
 
     if (this.users) {
-      this.erros.push("Usuário já cadastrado.");
+      this.erros.push("- Usuário já cadastrado.");
     }
   }
 }
