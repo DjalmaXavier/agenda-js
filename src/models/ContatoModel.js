@@ -17,16 +17,26 @@ class Contato {
     this.erros = [];
     this.contato = null;
   }
+
   async register() {
     this.valid();
     if (this.erros.length > 0) return;
 
     this.contato = await ContatoModel.create(this.body);
   }
-  static async searchFromId(id) {
+
+  async edit(id) {
     if (typeof id !== "string") return;
-    return await ContatoModel.findById(id);
+
+    this.valid();
+
+    if (this.erros.length > 0) return;
+
+    this.contato = await ContatoModel.findByIdAndUpdate(id, this.body, {
+      new: true,
+    });
   }
+
   valid() {
     this.cleanUp();
     //Verificar e-mail
@@ -51,6 +61,23 @@ class Contato {
       email: this.body.email,
       telefone: this.body.telefone,
     };
+  }
+
+  //metodos estaticos
+
+  static async searchFromId(id) {
+    if (typeof id !== "string") return;
+    return await ContatoModel.findById(id);
+  }
+  static async searchContacts() {
+    const contatos = ContatoModel.find().sort({ criadoEm: -1 });
+    return contatos;
+  }
+
+  static async delete(id) {
+    if (typeof id !== "string") return;
+    const contato = await ContatoModel.findOneAndDelete({ _id: id });
+    return contato;
   }
 }
 
