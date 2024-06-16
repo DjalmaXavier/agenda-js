@@ -35,6 +35,7 @@ class Login {
   async register() {
     this.valid();
     if (this.erros.length > 0) return;
+
     //Verifica se já existe e-mail na base
     await this.userExist();
 
