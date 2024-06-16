@@ -12,8 +12,10 @@
       <div class="row">
         <div class="col-lg">
           <h4>Faça seu cadastro</h4>
-          <p>Caso não tenha uma conta, venha fazer parte da agenda!</p>
-          <form action="/login/register" method="POST">
+          <p class="pointer-register">
+            Caso não tenha uma conta, venha fazer parte da agenda!
+          </p>
+          <form class="form-register" action="/login/register" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
             <div class="mb-3 my-4">
               <label>Seu e-mail</label>
@@ -42,8 +44,10 @@
 
         <div class="col-lg">
           <h4>Faça seu login</h4>
-          <p>Se você já é nosso membro, faça login abaixo:</p>
-          <form action="/login/enter" method="post">
+          <p class="pointer-login">
+            Se você já é nosso membro, faça login abaixo:
+          </p>
+          <form class="form-login" action="/login/enter" method="post">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
             <div class="mb-3 my-4">
               <label>E-mail</label>
