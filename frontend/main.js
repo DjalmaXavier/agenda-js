@@ -1,4 +1,9 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+import Verify from "./modules/Verify";
 
-import "./assets/css/style.css";
+const login = new Verify(".form-login");
+const register = new Verify(".form-register");
+
+register.init();
+login.init();
